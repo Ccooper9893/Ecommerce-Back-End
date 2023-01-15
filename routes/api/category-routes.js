@@ -21,7 +21,7 @@ router.get('/:id', async (req, res) => {
   // find one category by its `id` value
   // be sure to include its associated Products
   try {
-    const categoryData = await Category.findByPk( req.params.id,
+    const categoryData = await Category.findByPk(req.params.id,
       {
         include: [{model:Product}],
       });
@@ -43,9 +43,9 @@ router.post('/', async (req, res) => {
   // create a new category
   try {
     //Creates new row within Categories
-    const newCategory = await Category.create({
-      category_name: req.body.category_name
-    })
+    const newCategory = await Category.create(req.body, //Don't use this if there are isAdmin key/value
+      // {category_name: req.body.category_name} Can remove by putting this here ^
+    )
     res.status(200).json(newCategory);
     
   } catch (error) {
@@ -56,11 +56,11 @@ router.post('/', async (req, res) => {
 router.put('/:id', async (req, res) => {
   // update a category by its `id` value
   try {
-    const updatedCategory = await Category.update(
-      { category_name: req.body.category_name }, //Update category name
+    const updatedCategory = await Category.update(req.body,
+      // { category_name: req.body.category_name }, //Update category name
       { where: { id: req.params.id }} // Where request parameter id = category id
     )
-    res.status(200).json(updatedCategory);
+    res.status(201).json(updatedCategory);
 
   } catch (error) {
     res.status(400).json({ message: 'No category with that id exists!' }) ;
@@ -71,9 +71,7 @@ router.delete('/:id', async (req, res) => {
   // delete a category by its `id` value
   try {
     const deletedCategory = await Category.destroy({
-      where: {
-        id: req.params.id,
-      },
+      where: { id: req.params.id}
     });
     
     if (!deletedCategory) {
