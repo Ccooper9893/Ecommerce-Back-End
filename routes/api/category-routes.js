@@ -60,10 +60,13 @@ router.put('/:id', async (req, res) => {
       // { category_name: req.body.category_name }, //Update category name
       { where: { id: req.params.id }} // Where request parameter id = category id
     )
-    res.status(201).json(updatedCategory);
+    if(updatedCategory === [0]) {
+      res.status(400).json({ message: 'Client side data insufficient!' })
+    }
+    res.status(201).json(updatedCategory)
 
   } catch (error) {
-    res.status(400).json({ message: 'No category with that id exists!' }) ;
+    res.status(500).json(error);
   }
 });
 
