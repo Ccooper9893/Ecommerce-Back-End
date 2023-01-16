@@ -50,7 +50,7 @@ ___
 Step for using this application:
 1. Create the database by running MySQL: SOURCE db/schema.sql;
 2. Enter required MySQL credentials into the .env file.
-3. Seed the database by running node seeds/index.js.
+3. Seed the database by running node seeds/index.js or npm run seed.
 4. To start the application type npm start or node server.js into the terminal.
 
 Walkthrough Video Guide - 

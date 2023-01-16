@@ -6,12 +6,15 @@ const ProductTag = require('./ProductTag');
 
 // Products belongsTo Category
 Product.belongsTo(Category, {
-  // foreignKey: 'id' Dont need this because Foeign key is automatically defined in target model Category
+  foreignKey: 'id'
 });
+  // foreignKey: 'id' Dont need this because Foreign key is automatically defined in target model Category
+  // (Reason for duplicate categoryId)????
 
 // Categories have many Products
-//Foreign key is automatically defined in target model Product
+//Foreign key is automatically defined in target model Product (Reason for duplicate tagId and ProductId)????
 Category.hasMany(Product, {
+  foreignKey: 'category_id'
 });
 
 // Products belongToMany Tags (through ProductTag)
@@ -22,14 +25,16 @@ Category.hasMany(Product, {
   // and define the appropriate foreign keys on it.
   //A.belongsToMany(B, {through: C});
 
-Product.belongsToMany(Tag,
-  { through: ProductTag } 
-);
+Product.belongsToMany(Tag, {
+  through: 'product_tag',
+  foreignKey: 'product_id'
+});
 
 // Tags belongToMany Products (through ProductTag)
-Tag.belongsToMany(Product, 
-  { through: ProductTag }
-);
+Tag.belongsToMany(Product, {
+  through: 'product_tag',
+  foreignKey: 'tag_id'
+});
 
 module.exports = {
   Product,
