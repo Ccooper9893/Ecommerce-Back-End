@@ -14,7 +14,7 @@ Product.belongsTo(Category, {
 // Categories have many Products
 //Foreign key is automatically defined in target model Product (Reason for duplicate tagId and ProductId)????
 Category.hasMany(Product, {
-  foreignKey: 'category_id'
+  foreignKey: 'id'
 });
 
 // Products belongToMany Tags (through ProductTag)
