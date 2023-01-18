@@ -9,7 +9,8 @@ router.get('/', async (req, res) => {
   try {
     //Join tables Category and Products
     const categoryData = await Category.findAll({
-      include: [{ model: Product }],
+      include: [{ model: Product, attributes: {exclude: ['categoryId']}}],
+      attributes: {exclude: ['categoryId']}
     });
     res.status(200).json(categoryData);
   } catch (error) {
@@ -23,7 +24,7 @@ router.get('/:id', async (req, res) => {
   try {
     const categoryData = await Category.findByPk(req.params.id,
       {
-        include: [{model:Product}],
+        include: [{model:Product, attributes: {exclude: ['categoryId']}}],
       });
 
       //Checks if category data exists

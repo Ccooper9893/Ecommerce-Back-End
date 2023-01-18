@@ -4,6 +4,7 @@ const sequelize = require('../config/connection');
 
 class ProductTag extends Model {}
 
+//This is a junction table for many to many relationships (product and tag)
 ProductTag.init(
   {
     // define columns
