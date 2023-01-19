@@ -54,7 +54,7 @@ Step for using this application:
 4. To start the application type npm start or node server.js into the terminal.
 
 Walkthrough Video Guide - 
-https://drive.google.com/file/d/1GsImwtpI7LeYq9kqHbusoIem0XhpaVey/view
+https://drive.google.com/file/d/1LeM_mMqMrqV8gQsc31ZKSJx9HN21-jPx/view
 
 ## *Software*
 ___
@@ -77,7 +77,7 @@ For more information about this license please visit https://opensource.org/lice
 ___
 For questions or concerns please contact me via Github.
   - Github: https://github.com/ccooper9893
-  - Github Repository: https://github.com/Ccooper9893/Employee-Tracker
+  - Github Repository: https://github.com/Ccooper9893/Ecommerce-Back-End.git
 
 
 

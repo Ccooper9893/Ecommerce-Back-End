@@ -10,11 +10,11 @@ router.get('/', async (req, res) => {
     //Join tables Category and Products
     const categoryData = await Category.findAll({
       include: [{ model: Product, attributes: {exclude: ['categoryId']}}],
-      attributes: {exclude: ['categoryId']}
+      attributes: {exclude: ['categoryId']} //Excluding automatically created foreign key id from response to avoid duplicates
     });
     res.status(200).json(categoryData);
   } catch (error) {
-    res.status(500).json(error); //Server encountered an unexpected condition that prevented it from fulfilling the request.
+    res.status(500).json(error);
   }
 });
 
